@@ -20,11 +20,11 @@ const rateLimitMap = new Map<string, { count: number; firstAttempt: number; last
 function pruneRateLimitMap() {
   const now = Date.now();
   if (rateLimitMap.size > 200) {
-    for (const [k, rec] of rateLimitMap.entries()) {
+    rateLimitMap.forEach((rec, k) => {
       if (now - rec.lastSubmission > 300000) {
         rateLimitMap.delete(k);
       }
-    }
+    });
   }
 }
 
