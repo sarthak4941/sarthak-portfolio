@@ -1,27 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Onest:wght@300;400;500;600;700;800;900&display=swap');
+@import "lenis/dist/lenis.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020204;
+  --foreground: #f8fafc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #020204;
+  color: #f8fafc;
+  font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #020204;
+  color: #f8fafc;
+  overflow-x: hidden;
+  position: relative;
+  font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020204;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2029;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #383c4e;
+}
+
+/* Subtle Editorial Glassmorphism */
+.glass-panel {
+  background: rgba(12, 13, 18, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(18, 20, 30, 0.85);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Italic Serif Editorial Accents (Rishi Thakor style) */
+.font-editorial {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+}
+
+/* Holographic Rainbow Foil Sheen (for 3D Ability Card) */
+.holographic-sheen {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 128, 0.3) 0%,
+    rgba(0, 240, 255, 0.3) 25%,
+    rgba(255, 215, 0, 0.3) 50%,
+    rgba(168, 85, 247, 0.3) 75%,
+    rgba(0, 255, 128, 0.3) 100%
+  );
+  mix-blend-mode: color-dodge;
+}
+
+/* Subtle Grid Background */
+.bg-subtle-grid {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+/* ================== HANGING PULL ROPE ANIMATIONS ================== */
+@keyframes ropeSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.85deg);
+  }
+  75% {
+    transform: rotate(-0.85deg);
   }
 }
+
+.animate-rope-sway {
+  animation: ropeSway 4.8s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* ================== GLOBAL WARM BEIGE LIGHT MODE STYLING ================== */
+html, body, main {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Warm Beige / Ivory Canvas */
+html.light,
+html.light body,
+html.light main {
+  background-color: #f5f0e8 !important;
+  color: #1c1917 !important;
+}
+
+html.light ::selection {
+  background: rgba(190, 165, 130, 0.35);
+  color: #1c1917;
+}
+
+/* Elegant Beige Glassmorphism */
+html.light .glass-panel {
+  background: rgba(248, 243, 235, 0.85) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(80, 65, 50, 0.12) !important;
+  box-shadow: 0 12px 32px -10px rgba(80, 65, 50, 0.08);
+}
+
+html.light .glass-panel-hover:hover {
+  background: rgba(253, 250, 244, 0.96) !important;
+  border-color: rgba(80, 65, 50, 0.22) !important;
+  box-shadow: 0 16px 36px -10px rgba(80, 65, 50, 0.12) !important;
+}
+
+html.light .bg-subtle-grid {
+  background-image: 
+    linear-gradient(to right, rgba(80, 65, 50, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(80, 65, 50, 0.045) 1px, transparent 1px);
+}
+
+html.light section {
+  background-color: transparent !important;
+}
+
+html.light #hero {
+  background-color: #f5f0e8 !important;
+}
+
+html.light #doors {
+  background-color: #ede6da !important;
+  border-color: rgba(80, 65, 50, 0.1) !important;
+}
+
+html.light #story {
+  background-color: #f5f0e8 !important;
+}
+
+html.light #contact {
+  background-color: #eee7dc !important;
+}
+
+html.light footer {
+  background-color: #e6dfd2 !important;
+  border-color: rgba(80, 65, 50, 0.12) !important;
+}
+
+/* Warm Charcoal Typography */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4 {
+  color: #1c1917 !important;
+}
+
+html.light p {
+  color: #443e37 !important;
+}
+
+html.light .text-white {
+  color: #1c1917 !important;
+}
+
+html.light .text-slate-100 {
+  color: #1c1917 !important;
+}
+
+html.light .text-slate-200 {
+  color: #2c2520 !important;
+}
+
+html.light .text-slate-300 {
+  color: #443e37 !important;
+}
+
+html.light .text-slate-400 {
+  color: #6e6559 !important;
+}
+
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/15,
+html.light .border-white\/20,
+html.light .border-white\/30 {
+  border-color: rgba(80, 65, 50, 0.12) !important;
+}
+
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/5 {
+  background-color: rgba(80, 65, 50, 0.04) !important;
+}
+
+/* Inputs & Form Controls in Warm Beige */
+html.light input,
+html.light textarea {
+  background-color: #faf6ee !important;
+  border-color: rgba(80, 65, 50, 0.2) !important;
+  color: #1c1917 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #948777 !important;
+}
+
+/* Invert primary solid white buttons to solid dark charcoal with ivory text in beige mode */
+html.light button.bg-white,
+html.light a.bg-white {
+  background-color: #1c1917 !important;
+  color: #fdfbf7 !important;
+}
+
+html.light button.bg-white span,
+html.light a.bg-white span {
+  color: #fdfbf7 !important;
+}
+
+html.light button.bg-white svg,
+html.light a.bg-white svg {
+  color: #fdfbf7 !important;
+}
+
+/* Navbar in Beige Light Mode */
+html.light nav.bg-black\/40 {
+  background-color: rgba(245, 240, 232, 0.85) !important;
+  border-color: rgba(80, 65, 50, 0.12) !important;
+}
+
+/* Transparent overlays */
+html.light .bg-\[\#0c0d12\],
+html.light .bg-\[\#030305\],
+html.light .bg-\[\#020204\],
+html.light .bg-\[\#040406\],
+html.light .bg-\[\#050508\] {
+  background-color: transparent !important;
+}
+
