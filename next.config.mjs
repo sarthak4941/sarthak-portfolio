@@ -14,7 +14,7 @@ const cspHeader = `
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  transpilePackages: ['three'],
+  transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
   async headers() {
     return [
       {
